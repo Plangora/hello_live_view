@@ -15,7 +15,8 @@ config :hello_live_view, HelloLiveViewWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "3nFITOb9g/ZF69If/iIdAGNSNkbWarl9u0+X45aMfPjFn4Sg6LYyEVGF92bN/amM",
   render_errors: [view: HelloLiveViewWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: HelloLiveView.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: HelloLiveView.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [signing_salt: "nuZn/1owO6mDMJ4/iZSq6YYS4cGb/cT8"]
 
 # Configures Elixir's Logger
 config :logger, :console,

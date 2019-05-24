@@ -23,6 +23,7 @@ defmodule HelloLiveViewWeb do
 
       import Plug.Conn
       import HelloLiveViewWeb.Gettext
+      import Phoenix.LiveView.Controller, only: [live_render: 3]
       alias HelloLiveViewWeb.Router.Helpers, as: Routes
     end
   end
@@ -41,6 +42,24 @@ defmodule HelloLiveViewWeb do
 
       import HelloLiveViewWeb.ErrorHelpers
       import HelloLiveViewWeb.Gettext
+      import Phoenix.LiveView, only: [live_render: 2, live_render: 3]
+      alias HelloLiveViewWeb.Router.Helpers, as: Routes
+    end
+  end
+
+  def live_view do
+    quote do
+      use Phoenix.LiveView
+
+      # Import convenience functions from controllers
+      import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
+      import Phoenix.HTML.Link, only: [link: 2]
+
+      # Use all HTML functionality (forms, tags, etc)
+      use Phoenix.HTML
+
+      import HelloLiveViewWeb.ErrorHelpers
+      import HelloLiveViewWeb.Gettext
       alias HelloLiveViewWeb.Router.Helpers, as: Routes
     end
   end
@@ -50,6 +69,7 @@ defmodule HelloLiveViewWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import Phoenix.LiveView.Router
     end
   end
 

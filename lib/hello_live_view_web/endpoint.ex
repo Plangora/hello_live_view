@@ -4,6 +4,7 @@ defmodule HelloLiveViewWeb.Endpoint do
   socket "/socket", HelloLiveViewWeb.UserSocket,
     websocket: true,
     longpoll: false
+  socket "/live", Phoenix.LiveView.Socket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
