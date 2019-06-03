@@ -16,3 +16,5 @@ config :hello_live_view, HelloLiveViewWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :bcrypt_elixir, :log_rounds, 4
