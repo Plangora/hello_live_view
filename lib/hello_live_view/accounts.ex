@@ -8,6 +8,10 @@ defmodule HelloLiveView.Accounts do
 
   alias HelloLiveView.Accounts.User
 
+  @topic inspect(__MODULE__)
+
+  def subscribe, do: Phoenix.PubSub.subscribe(HelloLiveView.PubSub, @topic)
+
   @doc """
   Returns the list of users.
 
@@ -53,6 +57,7 @@ defmodule HelloLiveView.Accounts do
     %User{}
     |> User.register_changeset(attrs)
     |> Repo.insert()
+    |> notify_subscribers([:user, :created])
   end
 
   @doc """
@@ -71,6 +76,7 @@ defmodule HelloLiveView.Accounts do
     user
     |> User.changeset(attrs)
     |> Repo.update()
+    |> notify_subscribers([:user, :updated])
   end
 
   @doc """
@@ -87,6 +93,7 @@ defmodule HelloLiveView.Accounts do
   """
   def delete_user(%User{} = user) do
     Repo.delete(user)
+    |> notify_subscribers([:user, :deleted])
   end
 
   @doc """
@@ -101,4 +108,11 @@ defmodule HelloLiveView.Accounts do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  defp notify_subscribers({:ok, result}, event) do
+    Phoenix.PubSub.broadcast(HelloLiveView.PubSub, @topic, {__MODULE__, event, result})
+    {:ok, result}
+  end
+
+  defp notify_subscribers({:error, reason}, _event), do: {:error, reason}
 end
