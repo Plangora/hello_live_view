@@ -109,6 +109,10 @@ defmodule HelloLiveView.Accounts do
     User.changeset(user, %{})
   end
 
+  def change_new_user(%User{} = user, attrs \\ %{}) do
+    User.register_changeset(user, attrs)
+  end
+
   defp notify_subscribers({:ok, result}, event) do
     Phoenix.PubSub.broadcast(HelloLiveView.PubSub, @topic, {__MODULE__, event, result})
     {:ok, result}

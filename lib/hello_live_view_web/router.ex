@@ -19,6 +19,7 @@ defmodule HelloLiveViewWeb.Router do
 
     get "/", PageController, :index
     live "/users", UserIndex
+    live "/users/new", UserNew
   end
 
   # Other scopes may use custom stacks.
