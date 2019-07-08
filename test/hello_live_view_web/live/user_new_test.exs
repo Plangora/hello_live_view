@@ -5,8 +5,8 @@ defmodule HelloLiveViewWeb.UserNewTest do
 
   setup do: {:ok, valid_attrs: %{"email" => "test@test.com", "password" => "testing123", "username" => "testuser"}}
 
-  test "created user will redirect to the index page", %{valid_attrs: attrs} do
-    {:ok, view, _html} = mount(@endpoint, @view, session: %{})
+  test "created user will redirect to the index page", %{conn: conn, valid_attrs: attrs} do
+    {:ok, view, _html} = live(conn, Routes.live_path(conn, @view))
     html = render_change(view, "validate-user", %{"user" => attrs})
     assert html =~ ~s(<button type="submit">Submit</button>)
     refute html =~ "can&#39;t be blank"
@@ -17,8 +17,8 @@ defmodule HelloLiveViewWeb.UserNewTest do
     end)
   end
 
-  test "cannot create invalid user", %{valid_attrs: attrs} do
-    {:ok, view, _html} = mount(@endpoint, @view, session: %{})
+  test "cannot create invalid user", %{conn: conn, valid_attrs: attrs} do
+    {:ok, view, _html} = live(conn, Routes.live_path(conn, @view))
     invalid_attrs = %{attrs | "username" => nil}
     html = render_change(view, "validate-user", %{"user" => invalid_attrs})
     assert html =~ ~s(<button type="submit" disabled>Submit</button>)

@@ -4,6 +4,7 @@ defmodule HelloLiveViewWeb.LiveViewCase do
   using do
     quote do
       # Import conveniences for testing with connections
+      use Phoenix.ConnTest
       import Phoenix.LiveViewTest
       alias HelloLiveViewWeb.Router.Helpers, as: Routes
 
@@ -19,6 +20,6 @@ defmodule HelloLiveViewWeb.LiveViewCase do
       Ecto.Adapters.SQL.Sandbox.mode(HelloLiveView.Repo, {:shared, self()})
     end
 
-    :ok
+    {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end
