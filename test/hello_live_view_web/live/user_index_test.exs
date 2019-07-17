@@ -8,7 +8,7 @@ defmodule HelloLiveViewWeb.UserIndexTest do
     {:ok, view, html} = live(conn, Routes.live_path(conn, @view))
     user = Fixtures.user_fixture()
     refute html =~ user.username
-    assert render(view) =~ user.username
+    assert render(view) =~ ~s(<a href="#{Routes.live_path(conn, HelloLiveViewWeb.UserShow, user)}">#{user.username}</a>)
   end
 
   test "deleted user will not show up on the view", %{conn: conn} do

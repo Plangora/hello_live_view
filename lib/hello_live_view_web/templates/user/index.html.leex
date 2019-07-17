@@ -1,5 +1,5 @@
 <ul>
   <%= for user <- @users do %>
-    <li><%= user.username %></li>
+    <li><%= link(user.username, to: Routes.live_path(@socket, HelloLiveViewWeb.UserShow, user)) %></li>
   <% end %>
 </ul>
