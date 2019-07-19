@@ -1,5 +1,9 @@
 <ul>
   <%= for user <- @users do %>
-    <li><%= link(user.username, to: Routes.live_path(@socket, HelloLiveViewWeb.UserShow, user)) %></li>
+    <li>
+      <%= link(user.username, to: Routes.live_path(@socket, HelloLiveViewWeb.UserShow, user)) %>
+      <button type="button" class="button" phx-confirm-click="delete-user" phx-value="<%= user.id %>">Delete</button>
+    </li>
   <% end %>
 </ul>
+<%= link("Create user", to: Routes.live_path(@socket, HelloLiveViewWeb.UserNew)) %>

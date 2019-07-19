@@ -9,6 +9,14 @@ defmodule HelloLiveViewWeb.UserIndex do
     {:ok, assign(socket, :users, Accounts.list_users())}
   end
 
+  def handle_event("delete-user", user_id, socket) do
+    user_id
+    |> Accounts.get_user!()
+    |> Accounts.delete_user()
+
+    {:noreply, socket}
+  end
+
   def handle_info({Accounts, [:user, _], _}, socket),
     do: {:noreply, assign(socket, :users, Accounts.list_users())}
 end

@@ -29,4 +29,12 @@ defmodule HelloLiveViewWeb.UserIndexTest do
     assert html =~ updated_username
     refute html =~ user.username
   end
+
+  test "can delete a user", %{conn: conn} do
+    user = Fixtures.user_fixture()
+    {:ok, view, html} = live(conn, Routes.live_path(conn, @view))
+    assert html =~ user.username
+    render_click(view, "delete-user", "#{user.id}")
+    refute render(view) =~ user.username
+  end
 end
