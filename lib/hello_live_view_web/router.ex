@@ -8,6 +8,7 @@ defmodule HelloLiveViewWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug Phoenix.LiveView.Flash
+    plug HelloLiveViewWeb.Locale
   end
 
   pipeline :api do
@@ -18,7 +19,7 @@ defmodule HelloLiveViewWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    live "/users", UserIndex
+    get "/users", UserController, :index
     live "/users/new", UserNew
     live "/users/:id", UserShow
   end

@@ -19,7 +19,7 @@ defmodule HelloLiveViewWeb.UserShowTest do
 
   test "deleted user will redirect to index page", %{conn: conn, user: user} do
     {:ok, view, _html} = live(conn, Routes.live_path(conn, @view, user))
-    users_path = Routes.live_path(conn, HelloLiveViewWeb.UserIndex)
+    users_path = Routes.user_path(conn, :index)
     assert_redirect(view, ^users_path, fn ->
       assert {:ok, _user} = Accounts.delete_user(user)
     end)

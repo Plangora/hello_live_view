@@ -11,7 +11,7 @@ defmodule HelloLiveViewWeb.UserNewTest do
     assert html =~ ~s(<button type="submit">Submit</button>)
     refute html =~ "can&#39;t be blank"
 
-    users_path = Routes.live_path(@endpoint, HelloLiveViewWeb.UserIndex)
+    users_path = Routes.user_path(conn, :index)
     assert_redirect(view, ^users_path, fn -> 
       assert render_submit(view, "submit-user", %{"user" => attrs})
     end)

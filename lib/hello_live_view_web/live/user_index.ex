@@ -4,8 +4,11 @@ defmodule HelloLiveViewWeb.UserIndex do
 
   def render(assigns), do: HelloLiveViewWeb.UserView.render("index.html", assigns)
 
-  def mount(_session, socket) do
-    if connected?(socket), do: Accounts.subscribe()
+  def mount(%{locale: locale}, socket) do
+    if connected?(socket) do 
+      Accounts.subscribe()
+      Gettext.put_locale(locale)
+    end
     {:ok, assign(socket, :users, Accounts.list_users())}
   end
 

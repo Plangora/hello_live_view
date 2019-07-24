@@ -1,5 +1,5 @@
 # HelloLiveView
-## JavaScript Interop with Phoenix LiveView
+## Localize with Phoenix LiveView
 
 To start your Phoenix server:
 
@@ -11,7 +11,7 @@ To start your Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Reference Video
-[https://youtu.be/ziuflbasrgk](https://youtu.be/ziuflbasrgk)
+[https://youtu.be/H3z99U8BNoA](https://youtu.be/H3z99U8BNoA)
 
 
 ## Learn more
