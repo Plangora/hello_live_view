@@ -2,8 +2,6 @@ defmodule HelloLiveViewWeb.UserIndexTest do
   use HelloLiveViewWeb.LiveViewCase
   alias HelloLiveView.{Accounts, Fixtures}
 
-  @view HelloLiveViewWeb.UserIndex
-
   test "created user will show up on the view", %{conn: conn} do
     {:ok, view, html} = live(conn, Routes.user_path(conn, :index))
     user = Fixtures.user_fixture()

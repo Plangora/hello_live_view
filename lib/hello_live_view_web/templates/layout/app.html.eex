@@ -10,12 +10,18 @@
   <body>
     <header>
       <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><%= link(gettext("Users"), to: Routes.user_path(@conn, :index)) %></li>
-            <li><a href="?locale=en">English</a></li>
-            <li><a href="?locale=zh">中文</a></li>
-          </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Hello LiveView</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="nav-content">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item"><%= link(gettext("Users"), to: Routes.user_path(@conn, :index), class: "nav-link") %></li>
+              <li class="nav-item"><a class="nav-link" href="?locale=en">English</a></li>
+              <li class="nav-item"><a class="nav-link" href="?locale=zh">中文</a></li>
+            </ul>
+          </div>
         </nav>
       </section>
     </header>

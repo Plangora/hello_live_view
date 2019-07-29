@@ -1,15 +1,24 @@
-<%= form_for @changeset, "#", [phx_change: "validate-user", phx_submit: "submit-user"], fn f -> %>
-  <%= label f, :username %>
-  <%= text_input f, :username %>
-  <%= error_tag f, :username %>
+<div class="row">
+  <div class="col col-sm-6 offset-sm-3">
+    <%= form_for @changeset, "#", [phx_change: "validate-user", phx_submit: "submit-user"], fn f -> %>
+      <div class="form-group">
+        <%= label f, :username %>
+        <%= text_input f, :username, class: "form-control" %>
+        <%= error_tag f, :username %>
+      </div>
+      <div class="form-group">
+        <%= label f, :email %>
+        <%= text_input f, :email, class: "form-control" %>
+        <%= error_tag f, :email %>
+      </div>
 
-  <%= label f, :email %>
-  <%= text_input f, :email %>
-  <%= error_tag f, :email %>
+      <div class="form-group">
+        <%= label f, :password %>
+        <%= password_input f, :password, class: "form-control" %>
+        <%= error_tag f, :password %>
+      </div>
 
-  <%= label f, :password %>
-  <%= password_input f, :password %>
-  <%= error_tag f, :password %>
-
-  <%= submit "Submit", disabled: !@changeset.valid? %>
-<% end %>
+      <%= submit "Submit", disabled: !@changeset.valid?, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

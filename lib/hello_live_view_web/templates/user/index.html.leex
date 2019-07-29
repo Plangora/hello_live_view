@@ -1,9 +1,13 @@
-<ul>
-  <%= for user <- @users do %>
-    <li>
-      <%= link(user.username, to: Routes.live_path(@socket, HelloLiveViewWeb.UserShow, user)) %>
-      <button type="button" class="button" phx-confirm-click="delete-user" phx-value="<%= user.id %>"><%= gettext("Delete") %></button>
-    </li>
-  <% end %>
-</ul>
-<%= link("Create user", to: Routes.live_path(@socket, HelloLiveViewWeb.UserNew)) %>
+<div class="row">
+  <div class="col col-sm-6 offset-sm-3">
+    <ul class="list-group list-group-flush mb-3">
+      <%= for user <- @users do %>
+        <li class="list-group-item">
+          <%= link(user.username, to: Routes.live_path(@socket, HelloLiveViewWeb.UserShow, user)) %>
+          <button type="button" class="btn btn-danger" phx-confirm-click="delete-user" phx-value="<%= user.id %>"><%= gettext("Delete") %></button>
+        </li>
+      <% end %>
+    </ul>
+    <%= link("Create user", to: Routes.live_path(@socket, HelloLiveViewWeb.UserNew), class: "btn btn-primary") %>
+  </div>
+</div>

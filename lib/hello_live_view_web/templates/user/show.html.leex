@@ -1,18 +1,22 @@
-<table>
-  <thead>
-    <tr>
-      <th>Field:</th>
-      <th>Data:</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Email:</td>
-      <td><%= @user.email %>
-    <tr>
-    <tr>
-      <td>Username:</td>
-      <td><%= @user.username %>
-    <tr>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col col-sm-6 offset-sm-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Field:</th>
+          <th>Data:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Email:</td>
+          <td><%= @user.email %>
+        <tr>
+        <tr>
+          <td>Username:</td>
+          <td><%= @user.username %>
+        <tr>
+      </tbody>
+    </table>
+  </div>
+</div>
