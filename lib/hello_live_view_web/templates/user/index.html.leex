@@ -8,6 +8,45 @@
         </li>
       <% end %>
     </ul>
-    <%= link("Create user", to: Routes.live_path(@socket, HelloLiveViewWeb.UserNew), class: "btn btn-primary") %>
+    <%= link("Create user", to: Routes.live_path(@socket, HelloLiveViewWeb.UserNew), class: "btn btn-primary", phx_click: "show-modal", data_target: "#new-user", data_toggle: "modal") %>
+  </div>
+</div>
+
+<%= if @open_modal do %>
+  <div class="modal fade show" data-backdrop="static" tabindex="-1" role="dialog" id="new-user" aria-modal="true" style="display: block;">
+<% else %>
+  <div class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" id="new-user">
+<% end %>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" phx-click="close-modal">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_for @changeset, "#", [phx_change: "validate-user"], fn f -> %>
+          <div class="form-group">
+            <%= label f, :username %>
+            <%= text_input f, :username, class: "form-control" %>
+            <%= error_tag f, :username %>
+          </div>
+          <div class="form-group">
+            <%= label f, :email %>
+            <%= text_input f, :email, class: "form-control" %>
+            <%= error_tag f, :email %>
+          </div>
+
+          <div class="form-group">
+            <%= label f, :password %>
+            <%= password_input f, :password, class: "form-control" %>
+            <%= error_tag f, :password %>
+          </div>
+
+          <%= submit "Submit", disabled: !@changeset.valid?, class: "btn btn-primary", data_dismiss: "modal", phx_click: "submit-user" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

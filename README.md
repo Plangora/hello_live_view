@@ -1,5 +1,5 @@
 # HelloLiveView
-## Localize with Phoenix LiveView
+## Bootstrap Modal with Phoenix LiveView
 
 To start your Phoenix server:
 
@@ -11,11 +11,11 @@ To start your Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Reference Video
-[https://youtu.be/H3z99U8BNoA](https://youtu.be/H3z99U8BNoA)
+[https://youtu.be/HiHxN3qY6oQ](https://youtu.be/HiHxN3qY6oQ)
 
 
 ## Learn more
 
   * Plangora Official website: [https://www.plangora.com/](https://www.plangora.com/)
-  * Plangora YouTube Channel: [https://www.youtube.com/channel/UCiTNXma-lzM6XjhgPQzKREg](https://www.youtube.com/channel/UCiTNXma-lzM6XjhgPQzKREg)
+  * Plangora YouTube Channel: [https://www.youtube.com/c/Plangora](https://www.youtube.com/c/Plangora)
   * Phoenix Live View Playlist: [https://www.youtube.com/playlist?list=PL6gboNCsWvTcHrOZWcTUL78dpUaLYXPtB](https://www.youtube.com/playlist?list=PL6gboNCsWvTcHrOZWcTUL78dpUaLYXPtB)

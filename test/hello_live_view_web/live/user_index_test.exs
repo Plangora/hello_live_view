@@ -35,4 +35,14 @@ defmodule HelloLiveViewWeb.UserIndexTest do
     render_click(view, "delete-user", "#{user.id}")
     refute render(view) =~ user.username
   end
+
+  test "can create user", %{conn: conn} do
+    {:ok, view, html} = live(conn, Routes.user_path(conn, :index))
+    assert html =~ ~s(<div class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" id="new-user">)
+    assert render_click(view, "show-modal") =~ ~s(<div class="modal fade show" data-backdrop="static" tabindex="-1" role="dialog" id="new-user" aria-modal="true" style="display: block;">)
+    attrs = %{"email" => "test@test.com", "password" => "testing123", "username" => "testuser"}
+    render_change(view, "validate-user", %{"user" => attrs})
+    render_click(view, "submit-user")
+    assert render(view) =~ "testuser"
+  end
 end
