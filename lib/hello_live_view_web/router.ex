@@ -22,6 +22,7 @@ defmodule HelloLiveViewWeb.Router do
     get "/users", UserController, :index
     live "/users/new", UserNew
     live "/users/:id", UserShow
+    live "/users/:id/edit", UserEdit
   end
 
   # Other scopes may use custom stacks.
