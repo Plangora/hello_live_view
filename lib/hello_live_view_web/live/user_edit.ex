@@ -1,12 +1,19 @@
 defmodule HelloLiveViewWeb.UserEdit do
   use HelloLiveViewWeb, :live_view
-  alias HelloLiveView.{Accounts, Accounts.User}
+  alias HelloLiveView.Accounts
+  alias HelloLiveViewWeb.Presence
+  @topic "user_edit:"
+  @key "editor"
 
   def render(assigns), do: HelloLiveViewWeb.UserView.render("form.html", assigns)
 
   def mount(%{path_params: %{"id" => user_id}}, socket) do
     user = Accounts.get_user!(user_id)
-    {:ok, assign(socket, changeset: Accounts.change_user(user), user: user)}
+    if connected?(socket) do
+      HelloLiveViewWeb.Endpoint.subscribe(topic(user_id))
+      Presence.track(self(), topic(user_id), @key, %{})
+    end
+    {:ok, assign(socket, changeset: Accounts.change_user(user), user: user, number_of_users: number_of_users(user_id))}
   end
 
   def handle_event("validate-user", %{"user" => user_params}, %{assigns: %{user: user}} = socket) do
@@ -30,4 +37,16 @@ defmodule HelloLiveViewWeb.UserEdit do
     end
   end
 
+  def handle_info(%{event: "presence_diff"}, %{assigns: %{user: %{id: user_id}}} = socket) do
+    {:noreply, assign(socket, number_of_users: number_of_users(user_id))}
+  end
+
+  defp topic(user_id), do: @topic <> "#{user_id}"
+
+  defp number_of_users(user_id) do
+    case Presence.get_by_key(topic(user_id), @key) do
+      [] -> 1
+      %{metas: users} -> length(users)
+    end
+  end
 end

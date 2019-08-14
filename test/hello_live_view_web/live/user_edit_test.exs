@@ -30,4 +30,12 @@ defmodule HelloLiveViewWeb.UserEditTest do
 
     assert render_submit(view, "submit-user", %{"user" => invalid_attrs}) =~ "can&#39;t be blank"
   end
+
+  test "can track if other users are also editing", %{conn: conn, user: user} do
+    {:ok, view1, html} = live(conn, Routes.live_path(conn, @view, user))
+    assert html =~ "No other users are editing"
+    {:ok, _view, html} = live(conn, Routes.live_path(conn, @view, user))
+    assert html =~ "1 other user(s) editing"
+    assert render(view1) =~ "1 other user(s) editing"
+  end
 end

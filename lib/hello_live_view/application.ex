@@ -11,9 +11,9 @@ defmodule HelloLiveView.Application do
       # Start the Ecto repository
       HelloLiveView.Repo,
       # Start the endpoint when the application starts
-      HelloLiveViewWeb.Endpoint
+      HelloLiveViewWeb.Endpoint,
       # Starts a worker by calling: HelloLiveView.Worker.start_link(arg)
-      # {HelloLiveView.Worker, arg},
+      HelloLiveViewWeb.Presence
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

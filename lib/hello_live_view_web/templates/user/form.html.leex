@@ -20,5 +20,12 @@
 
       <%= submit "Submit", disabled: !@changeset.valid?, class: "btn btn-primary" %>
     <% end %>
+    <%= if assigns[:number_of_users] do %>
+      <%= if @number_of_users > 1 do %>
+        <p><%= @number_of_users - 1 %> other user(s) editing</p>
+      <% else %>
+        <p>No other users are editing</p>
+      <% end %>
+    <% end %>
   </div>
 </div>
