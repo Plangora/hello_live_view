@@ -10,8 +10,19 @@ defmodule HelloLiveViewWeb.ErrorHelpers do
   """
   def error_tag(form, field) do
     Enum.map(Keyword.get_values(form.errors, field), fn error ->
-      content_tag(:span, translate_error(error), class: "help-block")
+      content_tag(:div, translate_error(error), class: "invalid-feedback")
     end)
+  end
+
+  @doc """
+  Appends Bootstrap error class to input if there's an error
+  """
+  def add_error_class(form, field, class) do
+    if Keyword.has_key?(form.errors, field) do
+      class <> " is-invalid"
+    else
+      class
+    end
   end
 
   @doc """

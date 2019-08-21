@@ -3,18 +3,18 @@
     <%= form_for @changeset, "#", [phx_change: "validate-user", phx_submit: "submit-user"], fn f -> %>
       <div class="form-group">
         <%= label f, :username %>
-        <%= text_input f, :username, class: "form-control" %>
+        <%= text_input f, :username, class: add_error_class(f, :username, "form-control") %>
         <%= error_tag f, :username %>
       </div>
       <div class="form-group">
         <%= label f, :email %>
-        <%= text_input f, :email, class: "form-control" %>
+        <%= text_input f, :email, class: add_error_class(f, :email, "form-control") %>
         <%= error_tag f, :email %>
       </div>
 
       <div class="form-group">
         <%= label f, :password %>
-        <%= password_input f, :password, class: "form-control" %>
+        <%= password_input f, :password, class: add_error_class(f, :password, "form-control") %>
         <%= error_tag f, :password %>
       </div>
 
