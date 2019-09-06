@@ -1,5 +1,5 @@
 # HelloLiveView
-## Bootstrap Error Messages with Phoenix
+## Upgrade to Stable Phoenix LiveView
 
 To start your Phoenix server:
 
@@ -11,11 +11,11 @@ To start your Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Reference Video
-[https://youtu.be/BJamxLDd2Sc](https://youtu.be/BJamxLDd2Sc)
+[https://youtu.be/W_n6-MTEEu8](https://youtu.be/W_n6-MTEEu8)
 
 
 ## Learn more
 
   * Plangora Official website: [https://www.plangora.com/](https://www.plangora.com/)
   * Plangora YouTube Channel: [https://www.youtube.com/c/Plangora](https://www.youtube.com/c/Plangora)
-  * Phoenix Live View Playlist: [https://www.youtube.com/playlist?list=PL6gboNCsWvTcHrOZWcTUL78dpUaLYXPtB](https://www.youtube.com/playlist?list=PL6gboNCsWvTcHrOZWcTUL78dpUaLYXPtB)
+  * Phoenix LiveView Playlist: [https://www.youtube.com/playlist?list=PL6gboNCsWvTcHrOZWcTUL78dpUaLYXPtB](https://www.youtube.com/playlist?list=PL6gboNCsWvTcHrOZWcTUL78dpUaLYXPtB)
