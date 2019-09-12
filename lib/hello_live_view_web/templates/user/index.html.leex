@@ -4,7 +4,7 @@
       <%= for user <- @users do %>
         <li class="list-group-item">
           <%= link(user.username, to: Routes.live_path(@socket, HelloLiveViewWeb.UserShow, user)) %>
-          <button type="button" class="btn btn-danger" phx-confirm-click="delete-user" phx-value="<%= user.id %>"><%= gettext("Delete") %></button>
+          <button type="button" class="btn btn-danger" phx-confirm-click="delete-user" phx-value="<%= user.id %>" phx-hook="ConfirmClick"><%= gettext("Delete") %></button>
           <%= link("Edit", to: Routes.live_path(@socket, HelloLiveViewWeb.UserEdit, user), class: "btn btn-warning") %>
         </li>
       <% end %>
