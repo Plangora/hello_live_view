@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col col-sm-6 offset-sm-3">
-    <ul class="list-group list-group-flush mb-3">
+    <ul class="list-group list-group-flush mb-3" phx-update="append">
       <%= for user <- @users do %>
         <li class="list-group-item">
           <%= link(user.username, to: Routes.live_path(@socket, HelloLiveViewWeb.UserShow, user)) %>

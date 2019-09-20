@@ -10,7 +10,11 @@ defmodule HelloLiveViewWeb.UserIndex do
       Accounts.subscribe()
       Gettext.put_locale(locale)
     end
-    {:ok, assign(socket, users: Accounts.list_users(), changeset: Accounts.change_new_user(%User{}), open_modal: false)}
+    socket =
+      socket
+      |> assign(users: Accounts.list_users(), changeset: Accounts.change_new_user(%User{}), open_modal: false)
+      |> configure_temporary_assigns([:users])
+    {:ok, socket}
   end
 
   def handle_event("delete-user", user_id, socket) do
@@ -42,6 +46,8 @@ defmodule HelloLiveViewWeb.UserIndex do
     end
   end
 
+  def handle_info({Accounts, [:user, :created], user}, socket), do: {:noreply, assign(socket, :users, [user])}
+
   def handle_info({Accounts, [:user, _], _}, socket),
-    do: {:noreply, assign(socket, :users, Accounts.list_users())}
+    do: {:noreply, socket}
 end

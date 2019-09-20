@@ -1,5 +1,5 @@
 # HelloLiveView
-## Phoenix LiveView Hooks
+## Phoenix LiveView Append Update
 
 To start your Phoenix server:
 
@@ -11,7 +11,7 @@ To start your Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Reference Video
-[https://youtu.be/BxPMLdxHvYQ](https://youtu.be/BxPMLdxHvYQ)
+[https://youtu.be/_ZZ1kDVwVwY](https://youtu.be/_ZZ1kDVwVwY)
 
 
 ## Learn more
