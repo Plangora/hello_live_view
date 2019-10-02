@@ -12,8 +12,7 @@ defmodule HelloLiveViewWeb.UserIndex do
     end
     socket =
       socket
-      |> assign(users: Accounts.list_users(), changeset: Accounts.change_new_user(%User{}), open_modal: false)
-      |> configure_temporary_assigns([:users])
+      |> assign(users: Accounts.list_users(), changeset: Accounts.change_new_user(%User{}), open_modal: false, temporary_assigns: [:users])
     {:ok, socket}
   end
 

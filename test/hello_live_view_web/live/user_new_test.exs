@@ -9,7 +9,7 @@ defmodule HelloLiveViewWeb.UserNewTest do
     {:ok, view, _html} = live(conn, Routes.live_path(conn, @view))
     html = render_change(view, "validate-user", %{"user" => attrs})
     assert html =~ ~s(<button class="btn btn-primary" type="submit">Submit</button>)
-    refute html =~ "can&#39;t be blank"
+    refute html =~ "can&apos;t be blank"
 
     users_path = Routes.user_path(conn, :index)
     assert_redirect(view, ^users_path, fn -> 
@@ -21,9 +21,9 @@ defmodule HelloLiveViewWeb.UserNewTest do
     {:ok, view, _html} = live(conn, Routes.live_path(conn, @view))
     invalid_attrs = %{attrs | "username" => nil}
     html = render_change(view, "validate-user", %{"user" => invalid_attrs})
-    assert html =~ ~s(<button class="btn btn-primary" type="submit" disabled>Submit</button>)
-    assert html =~ "can&#39;t be blank"
+    assert html =~ ~s(<button class="btn btn-primary" type="submit" disabled="disabled">Submit</button>)
+    assert html =~ "can&apos;t be blank"
 
-    assert render_submit(view, "submit-user", %{"user" => invalid_attrs}) =~ "can&#39;t be blank"
+    assert render_submit(view, "submit-user", %{"user" => invalid_attrs}) =~ "can&apos;t be blank"
   end
 end

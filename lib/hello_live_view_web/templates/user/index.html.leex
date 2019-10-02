@@ -1,11 +1,10 @@
 <div class="row">
   <div class="col col-sm-6 offset-sm-3">
-    <ul class="list-group list-group-flush mb-3" phx-update="append">
+    <ul class="list-group list-group-flush mb-3" phx-update="append" id="users">
       <%= for user <- @users do %>
         <li class="list-group-item">
-          <%= link(user.username, to: Routes.live_path(@socket, HelloLiveViewWeb.UserShow, user)) %>
-          <button type="button" class="btn btn-danger" phx-confirm-click="delete-user" phx-value="<%= user.id %>" phx-hook="ConfirmClick"><%= gettext("Delete") %></button>
-          <%= link("Edit", to: Routes.live_path(@socket, HelloLiveViewWeb.UserEdit, user), class: "btn btn-warning") %>
+          <%= link(user.username, to: Routes.user_path(@socket, :show, user)) %>
+          <%= link("Edit", to: Routes.user_path(@socket, :edit, user), class: "btn btn-warning") %>
         </li>
       <% end %>
     </ul>

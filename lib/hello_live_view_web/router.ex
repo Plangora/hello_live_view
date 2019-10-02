@@ -19,10 +19,8 @@ defmodule HelloLiveViewWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/users", UserController, :index
     live "/users/new", UserNew
-    live "/users/:id", UserShow
-    live "/users/:id/edit", UserEdit
+    resources "/users", UserController, only: [:index, :show, :edit]
   end
 
   # Other scopes may use custom stacks.

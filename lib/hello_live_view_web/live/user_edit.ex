@@ -7,7 +7,7 @@ defmodule HelloLiveViewWeb.UserEdit do
 
   def render(assigns), do: HelloLiveViewWeb.UserView.render("form.html", assigns)
 
-  def mount(%{path_params: %{"id" => user_id}}, socket) do
+  def mount(%{user_id: user_id}, socket) do
     user = Accounts.get_user!(user_id)
     if connected?(socket) do
       HelloLiveViewWeb.Endpoint.subscribe(topic(user_id))
@@ -30,7 +30,7 @@ defmodule HelloLiveViewWeb.UserEdit do
         socket =
           socket
           |> put_flash(:info, "User was successfully updated!")
-          |> redirect(to: Routes.live_path(socket, HelloLiveViewWeb.UserShow, user))
+          |> redirect(to: Routes.user_path(socket, :show, user))
         {:stop, socket}
       {:error, changeset} ->
         {:noreply, assign(socket, :changeset, changeset)}

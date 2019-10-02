@@ -1,5 +1,5 @@
 # HelloLiveView
-## Phoenix LiveView Append Update
+## Phoenix LiveView 0.3.0
 
 To start your Phoenix server:
 
@@ -11,7 +11,7 @@ To start your Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Reference Video
-[https://youtu.be/_ZZ1kDVwVwY](https://youtu.be/_ZZ1kDVwVwY)
+[https://youtu.be/t6_wqzQJcjk](https://youtu.be/t6_wqzQJcjk)
 
 
 ## Learn more
