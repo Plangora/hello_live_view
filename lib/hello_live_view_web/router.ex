@@ -21,6 +21,7 @@ defmodule HelloLiveViewWeb.Router do
     get "/", PageController, :index
     live "/users/new", UserNew
     resources "/users", UserController, only: [:index, :show, :edit]
+    live "/limit", Limit
   end
 
   # Other scopes may use custom stacks.

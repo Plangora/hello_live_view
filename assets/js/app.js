@@ -20,8 +20,9 @@ Hooks.ConfirmClick = {
   }
 };
 import "phoenix_html"
-import LiveSocket from "phoenix_live_view";
-const liveSocket = new LiveSocket("/live", {hooks: Hooks});
+import {Socket} from "phoenix";
+import {LiveSocket} from "phoenix_live_view";
+const liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks});
 liveSocket.connect();
 import 'jquery';
 import 'bootstrap';
