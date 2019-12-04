@@ -25,6 +25,11 @@ defmodule HelloLiveView.Accounts do
     Repo.all(User)
   end
 
+  def list_users_by_ids(list_of_ids) do
+    from(u in User, where: u.id in ^list_of_ids, select: {u.id, u})
+    |> Repo.all()
+  end
+
   @doc """
   Gets a single user.
 

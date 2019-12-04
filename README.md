@@ -1,5 +1,5 @@
 # HelloLiveView
-## Rate Limiting with Phoenix LiveView
+## Phoenix LiveView Components
 
 To start your Phoenix server:
 
@@ -11,7 +11,7 @@ To start your Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Reference Video
-[https://youtu.be/g7XqDmUyHrk](https://youtu.be/g7XqDmUyHrk)
+[https://youtu.be/bc9GhcHXOJY](https://youtu.be/bc9GhcHXOJY)
 
 
 ## Learn more
