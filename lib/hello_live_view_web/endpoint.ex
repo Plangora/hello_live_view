@@ -1,11 +1,12 @@
 defmodule HelloLiveViewWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :hello_live_view
+  @session_options [store: :cookie, key: "_hello_live_view_key", signing_salt: "KeA/1XJg"]
 
   socket "/socket", HelloLiveViewWeb.UserSocket,
     websocket: true,
     longpoll: false
 
-  socket "/live", Phoenix.LiveView.Socket
+  socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -39,10 +40,7 @@ defmodule HelloLiveViewWeb.Endpoint do
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
-    store: :cookie,
-    key: "_hello_live_view_key",
-    signing_salt: "KeA/1XJg"
+  plug Plug.Session, @session_options
 
   plug HelloLiveViewWeb.Router
 end

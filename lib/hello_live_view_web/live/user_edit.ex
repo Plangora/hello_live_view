@@ -7,13 +7,20 @@ defmodule HelloLiveViewWeb.UserEdit do
 
   def render(assigns), do: HelloLiveViewWeb.UserView.render("form.html", assigns)
 
-  def mount(%{user_id: user_id}, socket) do
+  def mount(%{"user_id" => user_id}, socket) do
     user = Accounts.get_user!(user_id)
+
     if connected?(socket) do
       HelloLiveViewWeb.Endpoint.subscribe(topic(user_id))
       Presence.track(self(), topic(user_id), @key, %{})
     end
-    {:ok, assign(socket, changeset: Accounts.change_user(user), user: user, number_of_users: number_of_users(user_id))}
+
+    {:ok,
+     assign(socket,
+       changeset: Accounts.change_user(user),
+       user: user,
+       number_of_users: number_of_users(user_id)
+     )}
   end
 
   def handle_event("validate-user", %{"user" => user_params}, %{assigns: %{user: user}} = socket) do
@@ -21,6 +28,7 @@ defmodule HelloLiveViewWeb.UserEdit do
       user
       |> Accounts.change_user(user_params)
       |> Map.put(:action, :update)
+
     {:noreply, assign(socket, :changeset, changeset)}
   end
 
@@ -31,7 +39,9 @@ defmodule HelloLiveViewWeb.UserEdit do
           socket
           |> put_flash(:info, "User was successfully updated!")
           |> redirect(to: Routes.user_path(socket, :show, user))
+
         {:stop, socket}
+
       {:error, changeset} ->
         {:noreply, assign(socket, :changeset, changeset)}
     end

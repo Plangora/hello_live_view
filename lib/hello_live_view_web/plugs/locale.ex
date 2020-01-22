@@ -14,6 +14,7 @@ defmodule HelloLiveViewWeb.Locale do
     case get_session(conn, "locale") do
       nil ->
         setup_locale(conn, "en")
+
       locale ->
         setup_locale(conn, locale)
     end
@@ -21,6 +22,7 @@ defmodule HelloLiveViewWeb.Locale do
 
   defp setup_locale(conn, locale) do
     Gettext.put_locale(locale)
+
     conn
     |> put_session(:locale, locale)
     |> assign(:locale, locale)

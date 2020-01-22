@@ -16,9 +16,9 @@ defmodule HelloLiveViewWeb.LocaleTest do
       conn
       |> bypass_through(HelloLiveViewWeb.Router, :browser)
       |> get("/?locale=zh")
-    
-      assert get_session(conn, :locale) == "zh"
-      assert %{assigns: %{locale: "zh"}} = conn
+
+    assert get_session(conn, :locale) == "zh"
+    assert %{assigns: %{locale: "zh"}} = conn
   end
 
   test "will not accept unknown locale", %{conn: conn} do
@@ -26,8 +26,8 @@ defmodule HelloLiveViewWeb.LocaleTest do
       conn
       |> bypass_through(HelloLiveViewWeb.Router, :browser)
       |> get("/?locale=unknown")
-    
-      assert get_session(conn, :locale) == "en"
-      assert %{assigns: %{locale: "en"}} = conn
+
+    assert get_session(conn, :locale) == "en"
+    assert %{assigns: %{locale: "en"}} = conn
   end
 end

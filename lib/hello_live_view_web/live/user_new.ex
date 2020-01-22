@@ -13,6 +13,7 @@ defmodule HelloLiveViewWeb.UserNew do
       %User{}
       |> Accounts.change_new_user(user_params)
       |> Map.put(:action, :insert)
+
     {:noreply, assign(socket, :changeset, changeset)}
   end
 
@@ -23,10 +24,11 @@ defmodule HelloLiveViewWeb.UserNew do
           socket
           |> put_flash(:info, "User was successfully created!")
           |> redirect(to: Routes.user_path(socket, :index))
+
         {:stop, socket}
+
       {:error, changeset} ->
         {:noreply, assign(socket, :changeset, changeset)}
     end
   end
-
 end

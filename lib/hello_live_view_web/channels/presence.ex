@@ -68,6 +68,7 @@ defmodule HelloLiveViewWeb.Presence do
   information, while maintaining the required `:metas` field from the
   original presence data.
   """
-  use Phoenix.Presence, otp_app: :hello_live_view,
-                        pubsub_server: HelloLiveView.PubSub
+  use Phoenix.Presence,
+    otp_app: :hello_live_view,
+    pubsub_server: HelloLiveView.PubSub
 end

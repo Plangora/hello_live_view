@@ -5,14 +5,21 @@ defmodule HelloLiveViewWeb.UserIndex do
 
   def render(assigns), do: HelloLiveViewWeb.UserView.render("index.html", assigns)
 
-  def mount(%{locale: locale}, socket) do
-    if connected?(socket) do 
+  def mount(%{"locale" => locale}, socket) do
+    if connected?(socket) do
       Accounts.subscribe()
       Gettext.put_locale(locale)
     end
+
     socket =
       socket
-      |> assign(users: Accounts.list_users(), changeset: Accounts.change_new_user(%User{}), open_modal: false, temporary_assigns: [:users])
+      |> assign(
+        users: Accounts.list_users(),
+        changeset: Accounts.change_new_user(%User{}),
+        open_modal: false,
+        temporary_assigns: [:users]
+      )
+
     {:ok, socket}
   end
 
@@ -33,19 +40,23 @@ defmodule HelloLiveViewWeb.UserIndex do
       %User{}
       |> Accounts.change_new_user(user_params)
       |> Map.put(:action, :insert)
+
     {:noreply, assign(socket, changeset: changeset, user_params: user_params)}
   end
 
   def handle_event("submit-user", _, %{assigns: %{user_params: user_params}} = socket) do
     case Accounts.create_user(user_params) do
       {:ok, _user} ->
-        {:noreply, assign(socket, open_modal: false, changeset: Accounts.change_new_user(%User{}))}
+        {:noreply,
+         assign(socket, open_modal: false, changeset: Accounts.change_new_user(%User{}))}
+
       {:error, changeset} ->
         {:noreply, assign(socket, :changeset, changeset)}
     end
   end
 
-  def handle_info({Accounts, [:user, :created], user}, socket), do: {:noreply, assign(socket, :users, [user])}
+  def handle_info({Accounts, [:user, :created], user}, socket),
+    do: {:noreply, assign(socket, :users, [user])}
 
   def handle_info({Accounts, [:user, _], _}, socket),
     do: {:noreply, socket}
