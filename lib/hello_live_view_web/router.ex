@@ -20,7 +20,9 @@ defmodule HelloLiveViewWeb.Router do
 
     get "/", PageController, :index
     live "/users/new", UserNew
-    resources "/users", UserController, only: [:index, :show, :edit]
+    live "/users/:id/edit", UserEdit
+    live "/users/:id", UserShow
+    resources "/users", UserController, only: [:index]
     live "/limit", Limit
   end
 

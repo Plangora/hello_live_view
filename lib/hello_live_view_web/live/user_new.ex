@@ -4,7 +4,7 @@ defmodule HelloLiveViewWeb.UserNew do
 
   def render(assigns), do: HelloLiveViewWeb.UserView.render("form.html", assigns)
 
-  def mount(_session, socket) do
+  def mount(_params, _session, socket) do
     {:ok, assign(socket, :changeset, Accounts.change_new_user(%User{}))}
   end
 

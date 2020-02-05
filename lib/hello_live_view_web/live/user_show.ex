@@ -4,7 +4,7 @@ defmodule HelloLiveViewWeb.UserShow do
 
   def render(assigns), do: HelloLiveViewWeb.UserView.render("show.html", assigns)
 
-  def mount(%{"user_id" => user_id}, socket) do
+  def mount(%{"id" => user_id}, _session, socket) do
     if connected?(socket), do: Accounts.subscribe()
     {:ok, assign(socket, :user, Accounts.get_user!(user_id))}
   end

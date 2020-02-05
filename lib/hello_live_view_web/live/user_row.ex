@@ -6,8 +6,8 @@ defmodule HelloLiveViewWeb.UserRow do
     ~L"""
     <%= if @user do %>
       <li class="list-group-item">
-        <%= link(@user.username, to: Routes.user_path(@socket, :show, @user)) %>
-        <%= link("Edit", to: Routes.user_path(@socket, :edit, @user), class: "btn btn-warning") %>
+        <%= link(@user.username, to: Routes.live_path(@socket, HelloLiveViewWeb.UserShow, @user)) %>
+        <%= link("Edit", to: Routes.live_path(@socket, HelloLiveViewWeb.UserEdit, @user), class: "btn btn-warning") %>
         <button type="button" class="btn btn-danger" phx-click="delete">Delete</button>
       </li>
     <% end %>

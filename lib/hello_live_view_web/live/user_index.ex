@@ -5,7 +5,7 @@ defmodule HelloLiveViewWeb.UserIndex do
 
   def render(assigns), do: HelloLiveViewWeb.UserView.render("index.html", assigns)
 
-  def mount(%{"locale" => locale}, socket) do
+  def mount(_params, %{"locale" => locale}, socket) do
     if connected?(socket) do
       Accounts.subscribe()
       Gettext.put_locale(locale)
