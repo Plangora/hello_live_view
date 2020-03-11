@@ -4,11 +4,11 @@ defmodule HelloLiveViewWeb.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_flash
+    plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug Phoenix.LiveView.Flash
     plug HelloLiveViewWeb.Locale
+    plug :put_live_layout, {HelloLiveViewWeb.LayoutView, :app}
   end
 
   pipeline :api do

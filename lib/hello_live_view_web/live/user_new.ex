@@ -25,7 +25,7 @@ defmodule HelloLiveViewWeb.UserNew do
           |> put_flash(:info, "User was successfully created!")
           |> redirect(to: Routes.user_path(socket, :index))
 
-        {:stop, socket}
+        {:noreply, socket}
 
       {:error, changeset} ->
         {:noreply, assign(socket, :changeset, changeset)}

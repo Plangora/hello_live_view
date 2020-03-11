@@ -31,9 +31,8 @@ defmodule HelloLiveViewWeb.UserEditTest do
 
     users_path = Routes.live_path(conn, HelloLiveViewWeb.UserShow, user)
 
-    assert_redirect(view, ^users_path, fn ->
-      assert render_submit(view, "submit-user", %{"user" => attrs})
-    end)
+    assert render_submit(view, "submit-user", %{"user" => attrs})
+    assert_redirect(view, ^users_path)
   end
 
   test "cannot create invalid user", %{conn: conn, valid_attrs: attrs, user: user} do

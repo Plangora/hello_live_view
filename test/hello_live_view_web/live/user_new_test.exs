@@ -18,10 +18,8 @@ defmodule HelloLiveViewWeb.UserNewTest do
     refute html =~ "can&apos;t be blank"
 
     users_path = Routes.user_path(conn, :index)
-
-    assert_redirect(view, ^users_path, fn ->
-      assert render_submit(view, "submit-user", %{"user" => attrs})
-    end)
+    assert render_submit(view, "submit-user", %{"user" => attrs})
+    assert_redirect(view, ^users_path)
   end
 
   test "cannot create invalid user", %{conn: conn, valid_attrs: attrs} do

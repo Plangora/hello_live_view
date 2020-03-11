@@ -40,7 +40,7 @@ defmodule HelloLiveViewWeb.UserEdit do
           |> put_flash(:info, "User was successfully updated!")
           |> redirect(to: Routes.live_path(socket, HelloLiveViewWeb.UserShow, user))
 
-        {:stop, socket}
+        {:noreply, socket}
 
       {:error, changeset} ->
         {:noreply, assign(socket, :changeset, changeset)}

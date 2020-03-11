@@ -25,7 +25,7 @@ defmodule HelloLiveViewWeb.UserShow do
       |> put_flash(:error, "User was deleted!")
       |> redirect(to: Routes.user_path(socket, :index))
 
-    {:stop, socket}
+    {:noreply, socket}
   end
 
   def handle_info(_message, socket),
