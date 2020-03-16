@@ -45,7 +45,8 @@ defmodule HelloLiveView.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_live_view, "~> 0.9.0"},
       {:floki, ">= 0.0.0", only: :test},
-      {:bcrypt_elixir, "~> 2.0"}
+      {:bcrypt_elixir, "~> 2.0"},
+      {:cachex, "~> 3.2"}
     ]
   end
 

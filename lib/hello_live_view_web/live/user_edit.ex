@@ -15,9 +15,15 @@ defmodule HelloLiveViewWeb.UserEdit do
       Presence.track(self(), topic(user_id), @key, %{})
     end
 
+    attrs =
+      case Cachex.get(:user_cache, {__MODULE__, user.id}) do
+        {:ok, nil} -> %{}
+        {:ok, attrs} -> attrs
+      end
+
     {:ok,
      assign(socket,
-       changeset: Accounts.change_user(user),
+       changeset: Accounts.change_user(user, attrs) |> Map.put(:action, :update),
        user: user,
        number_of_users: number_of_users(user_id)
      )}
@@ -28,7 +34,7 @@ defmodule HelloLiveViewWeb.UserEdit do
       user
       |> Accounts.change_user(user_params)
       |> Map.put(:action, :update)
-
+    Cachex.put(:user_cache, {__MODULE__, user.id}, user_params)
     {:noreply, assign(socket, :changeset, changeset)}
   end
 

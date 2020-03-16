@@ -4,6 +4,7 @@ defmodule HelloLiveView.Application do
   @moduledoc false
 
   use Application
+  import Cachex.Spec
 
   def start(_type, _args) do
     # List all child processes to be supervised
@@ -13,7 +14,11 @@ defmodule HelloLiveView.Application do
       # Start the endpoint when the application starts
       HelloLiveViewWeb.Endpoint,
       # Starts a worker by calling: HelloLiveView.Worker.start_link(arg)
-      HelloLiveViewWeb.Presence
+      HelloLiveViewWeb.Presence,
+      Supervisor.Spec.worker(Cachex, [
+        :user_cache,
+        [expiration: expiration(default: :timer.hours(1), interval: :timer.hours(1))]
+      ])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

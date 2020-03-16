@@ -8,7 +8,9 @@ defmodule HelloLiveViewWeb.UserIndexTest do
     refute html =~ user.username
 
     assert render(view) =~
-             ~s(<a href="#{Routes.live_path(conn, HelloLiveViewWeb.UserShow, user)}">#{user.username}</a>)
+             ~s(<a href="#{Routes.live_path(conn, HelloLiveViewWeb.UserShow, user)}">#{
+               user.username
+             }</a>)
   end
 
   test "can create user", %{conn: conn} do
