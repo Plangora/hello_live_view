@@ -1,5 +1,5 @@
 # HelloLiveView
-## Caching Phoenix LiveView
+## Validations in Phoenix LiveView
 
 To start your Phoenix server:
 
@@ -11,7 +11,7 @@ To start your Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Reference Video
-[https://youtu.be/dHxFHH_7e4w](https://youtu.be/dHxFHH_7e4w)
+[https://youtu.be/xA2uNzbwbf4](https://youtu.be/xA2uNzbwbf4)
 
 
 ## Learn more
