@@ -1,5 +1,5 @@
 # HelloLiveView
-## Validations in Phoenix LiveView
+## Phoenix LiveView 0.10.0
 
 To start your Phoenix server:
 

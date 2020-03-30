@@ -8,7 +8,7 @@ defmodule HelloLiveViewWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug HelloLiveViewWeb.Locale
-    plug :put_live_layout, {HelloLiveViewWeb.LayoutView, :app}
+    plug :put_root_layout, {HelloLiveViewWeb.LayoutView, :root}
   end
 
   pipeline :api do
