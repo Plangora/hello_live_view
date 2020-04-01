@@ -11,7 +11,7 @@ To start your Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Reference Video
-[https://youtu.be/xA2uNzbwbf4](https://youtu.be/xA2uNzbwbf4)
+[https://youtu.be/lIV3x-KUFwU](https://youtu.be/lIV3x-KUFwU)
 
 
 ## Learn more
