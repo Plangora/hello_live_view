@@ -1,5 +1,6 @@
 defmodule HelloLiveViewWeb.Router do
   use HelloLiveViewWeb, :router
+  import Phoenix.LiveDashboard.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -24,6 +25,7 @@ defmodule HelloLiveViewWeb.Router do
     live "/users/:id", UserShow
     resources "/users", UserController, only: [:index]
     live "/limit", Limit
+    live_dashboard "/dashboard"
   end
 
   # Other scopes may use custom stacks.

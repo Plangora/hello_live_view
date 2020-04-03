@@ -2,6 +2,10 @@ defmodule HelloLiveViewWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :hello_live_view
   @session_options [store: :cookie, key: "_hello_live_view_key", signing_salt: "KeA/1XJg"]
 
+  plug Phoenix.LiveDashboard.RequestLogger,
+       param_key: "request_logger",
+       cookie_key: "request_logger"
+
   socket "/socket", HelloLiveViewWeb.UserSocket,
     websocket: true,
     longpoll: false

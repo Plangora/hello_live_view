@@ -43,10 +43,11 @@ defmodule HelloLiveView.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:phoenix_live_view, "~> 0.10.0"},
+      {:phoenix_live_view, "~> 0.10.0", override: true},
       {:floki, ">= 0.0.0", only: :test},
       {:bcrypt_elixir, "~> 2.0"},
-      {:cachex, "~> 3.2"}
+      {:cachex, "~> 3.2"},
+      {:phoenix_live_dashboard, github: "phoenixframework/phoenix_live_dashboard"}
     ]
   end
 
