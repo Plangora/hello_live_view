@@ -25,7 +25,7 @@ defmodule HelloLiveViewWeb.Router do
     live "/users/:id", UserShow
     resources "/users", UserController, only: [:index]
     live "/limit", Limit
-    live_dashboard "/dashboard"
+    live_dashboard "/dashboard", metrics: HelloLiveViewWeb.Telemetry
   end
 
   # Other scopes may use custom stacks.

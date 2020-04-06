@@ -11,6 +11,7 @@ defmodule HelloLiveView.Application do
     children = [
       # Start the Ecto repository
       HelloLiveView.Repo,
+      HelloLiveViewWeb.Telemetry,
       # Start the endpoint when the application starts
       HelloLiveViewWeb.Endpoint,
       # Starts a worker by calling: HelloLiveView.Worker.start_link(arg)

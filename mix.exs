@@ -47,6 +47,8 @@ defmodule HelloLiveView.MixProject do
       {:floki, ">= 0.0.0", only: :test},
       {:bcrypt_elixir, "~> 2.0"},
       {:cachex, "~> 3.2"},
+      {:telemetry_poller, "~> 0.4"},
+      {:telemetry_metrics, "~> 0.4"},
       {:phoenix_live_dashboard, github: "phoenixframework/phoenix_live_dashboard"}
     ]
   end

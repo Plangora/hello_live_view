@@ -10,7 +10,10 @@ defmodule HelloLiveViewWeb.ErrorHelpers do
   """
   def error_tag(form, field) do
     Enum.map(Keyword.get_values(form.errors, field), fn error ->
-      content_tag(:div, translate_error(error), class: "invalid-feedback", data: [phx_error_for: input_id(form, field)])
+      content_tag(:div, translate_error(error),
+        class: "invalid-feedback",
+        data: [phx_error_for: input_id(form, field)]
+      )
     end)
   end
 

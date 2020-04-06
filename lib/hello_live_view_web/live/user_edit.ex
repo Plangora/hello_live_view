@@ -34,6 +34,7 @@ defmodule HelloLiveViewWeb.UserEdit do
       user
       |> Accounts.change_user(user_params)
       |> Map.put(:action, :update)
+
     Cachex.put(:user_cache, {__MODULE__, user.id}, user_params)
     {:noreply, assign(socket, :changeset, changeset)}
   end
