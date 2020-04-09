@@ -1,5 +1,5 @@
 # HelloLiveView
-## Phoenix LiveView Dashboard Metrics
+## Phoenix LiveView 0.11.0
 
 To start your Phoenix server:
 
@@ -11,7 +11,7 @@ To start your Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Reference Video
-[https://youtu.be/ZrgtOp-wS0w](https://youtu.be/ZrgtOp-wS0w)
+[https://youtu.be/1cLXff5aIN4](https://youtu.be/1cLXff5aIN4)
 
 
 ## Learn more
