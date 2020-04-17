@@ -23,7 +23,7 @@ defmodule HelloLiveViewWeb.UserIndex do
     {:ok, socket}
   end
 
-  def handle_event("delete-user", user_id, socket) do
+  def handle_event("delete-user", %{"id" => user_id}, socket) do
     user_id
     |> Accounts.get_user!()
     |> Accounts.delete_user()
