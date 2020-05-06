@@ -32,7 +32,7 @@ defmodule HelloLiveViewWeb.UserEditTest do
     users_path = Routes.live_path(conn, HelloLiveViewWeb.UserShow, user)
 
     assert render_submit(view, "submit-user", %{"user" => attrs})
-    assert_redirect(view, ^users_path)
+    assert_redirect(view, users_path)
   end
 
   test "cannot create invalid user", %{conn: conn, valid_attrs: attrs, user: user} do
@@ -59,9 +59,12 @@ defmodule HelloLiveViewWeb.UserEditTest do
   test "can continue editing user from new session", %{conn: conn, user: user, valid_attrs: attrs} do
     {:ok, view, _html} = live(conn, Routes.live_path(conn, @view, user))
     invalid_attrs = %{attrs | "username" => nil}
-    html = render_change(view, "validate-user", %{"user" => invalid_attrs})
+    html =
+      view
+      |> element("form")
+      |> render_change(%{"user" => invalid_attrs})
     assert html =~ "can&apos;t be blank"
-    stop(view)
+    Process.exit(view.pid, :normal)
     {:ok, _view, html} = live(conn, Routes.live_path(conn, @view, user))
     assert html =~ "can&apos;t be blank"
   end

@@ -1,5 +1,5 @@
 # HelloLiveView
-## Ecto Mixed-Case Unique Index
+## Phoenix Liveview 0.12.0
 
 To start your Phoenix server:
 
@@ -11,7 +11,7 @@ To start your Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Reference Video
-[https://youtu.be/m3aqIB3kg_Q](https://youtu.be/m3aqIB3kg_Q)
+[https://youtu.be/S6aXO1k0Rx8](https://youtu.be/S6aXO1k0Rx8)
 
 
 ## Learn more
