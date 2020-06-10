@@ -21,6 +21,6 @@ defmodule HelloLiveViewWeb.UserShowTest do
     users_path = Routes.user_path(conn, :index)
 
     assert {:ok, _user} = Accounts.delete_user(user)
-    assert_redirect(view, ^users_path)
+    assert_redirect(view, users_path)
   end
 end
